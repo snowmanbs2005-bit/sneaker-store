@@ -11,13 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const card = document.createElement('div');
         card.className = 'card';
         card.innerHTML = `
-            <a href="product.html?id=${item.id}" class="product-card-link">
+            <a href="product.html?id=${item.id}" style="text-decoration: none; color: inherit;">
                 <img src="${item.img}" alt="${item.name}">
-                <div class="card-content">
-                    <h3>${item.name}</h3>
-                    <p class="price">$${item.price}</p>
-                    <button class="view-btn">Смотреть детали</button>
-                </div>
+                <h3>${item.name}</h3>
+                <p class="price">$${item.price}</p>
             </a>
         `;
         grid.appendChild(card);
