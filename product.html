@@ -50,13 +50,30 @@
             document.getElementById('p-color').innerText = product.color;
             document.getElementById('p-desc').innerText = product.desc;
 
+            // Смена изображения при клике (туда-обратно)
+           let isMainImage = true;
+           document.querySelector('.product-gallery').onclick = function() {
+                if (product.img2) {
+                    document.getElementById('p-img').src = isMainImage ? product.img2 : product.img;
+                    isMainImage = !isMainImage;
+                }
+            };
+
+
             // Рендерим размеры
-            const sizesHtml = product.sizes.map(s => `<div class="size-item">${s}</div>`).join('');
-            document.getElementById('p-sizes').innerHTML = sizesHtml;
+           if (product.sizes) {
+                const sizesHtml = product.sizes.map(s => `<div class="size-item">${s}</div>`).join('');
+                document.getElementById('p-sizes').innerHTML = sizesHtml;
+            }
 
             // Рендерим характеристики
-            const specsHtml = product.specs.map(s => `<li>• ${s}</li>`).join('');
-            document.getElementById('p-specs').innerHTML = specsHtml;
+           if (product.specs) {
+                const specsHtml = product.specs.map(s => `<li>• ${s}</li>`).join('');
+                document.getElementById('p-specs').innerHTML = specsHtml;
+            }
+        } else {
+            document.querySelector('.product-details').innerHTML = '<h2>Товар не найден</h2><p>Возможно, неверная ссылка.</p>';
+            document.querySelector('.product-gallery').style.display = 'none';
         }
     </script>
 </body>
