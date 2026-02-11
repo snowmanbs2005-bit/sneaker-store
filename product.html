@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Купить на BAKUSHIN STORE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="mini-header">
+        <a href="index.html">← Назад в магазин</a>
+        <div class="logo">BAKUSHIN STORE</div>
+    </header>
+
+    <div class="product-wrapper container">
+        <div class="product-gallery">
+            <img id="p-img" src="" alt="">
+        </div>
+
+        <div class="product-details">
+            <p id="p-color" class="color-tag"></p>
+            <h1 id="p-name"></h1>
+            <p id="p-price" class="price-big"></p>
+            
+            <div class="size-box">
+                <p>Доступные размеры:</p>
+                <div id="p-sizes" class="sizes-grid"></div>
+            </div>
+
+            <div class="description">
+                <h3>Описание</h3>
+                <p id="p-desc"></p>
+                <ul id="p-specs"></ul>
+            </div>
+            
+            <button class="buy-btn">Добавить в корзину</button>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script>
+        // Получаем ID из ссылки (например: product.html?id=adizero-evo)
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+        const product = products.find(item => item.id === productId);
+
+        if (product) {
+            document.getElementById('p-name').innerText = product.name;
+            document.getElementById('p-price').innerText = `$${product.price}`;
+            document.getElementById('p-img').src = product.img;
+            document.getElementById('p-color').innerText = product.color;
+            document.getElementById('p-desc').innerText = product.desc;
+
+            // Рендерим размеры
+            const sizesHtml = product.sizes.map(s => `<div class="size-item">${s}</div>`).join('');
+            document.getElementById('p-sizes').innerHTML = sizesHtml;
+
+            // Рендерим характеристики
+            const specsHtml = product.specs.map(s => `<li>• ${s}</li>`).join('');
+            document.getElementById('p-specs').innerHTML = specsHtml;
+        }
+    </script>
+</body>
+</html>

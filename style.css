@@ -1,56 +1,63 @@
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-}
-
-header {
-    background: #000;
-    color: #fff;
-    padding: 2rem;
-    text-align: center;
-}
-
-.container {
+/* Стили для сетки размеров (как у Adidas) */
+.sizes-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 40px;
-    max-width: 1200px;
-    margin: 0 auto;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    gap: 8px;
+    margin: 20px 0;
 }
 
-.card {
-    background: #fff;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    transition: transform 0.2s;
+.size-item {
+    border: 1px solid #e5e5e5;
+    padding: 12px;
     text-align: center;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.2s;
 }
 
-.card:hover {
-    transform: translateY(-5px);
+.size-item:hover {
+    border-color: #000;
+    background: #f8f8f8;
 }
 
-.card img {
-    max-width: 100%;
+/* Стили для страницы товара (Flexbox) */
+.product-wrapper {
+    display: flex;
+    flex-wrap: wrap; /* Чтобы на мобилках блоки встали друг под друга */
+    gap: 50px;
+    margin-top: 40px;
+}
+
+.product-gallery {
+    flex: 1;
+    min-width: 300px;
+}
+
+.product-gallery img {
+    width: 100%;
     border-radius: 8px;
 }
 
-.price {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #2c3e50;
+.product-details {
+    flex: 1;
+    min-width: 300px;
+    text-align: left;
 }
 
-button {
+.price-big {
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 15px 0;
+}
+
+.buy-btn {
+    width: 100%;
     background: #000;
-    color: white;
+    color: #fff;
+    padding: 20px;
+    font-size: 1.1rem;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
 }

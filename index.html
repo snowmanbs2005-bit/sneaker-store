@@ -1,20 +1,30 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bakushin Sneakers Store</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <h1>BAKUSHIN STORE</h1>
-        <p>Лучший выбор для твоих побед</p>
-    </header>
+<script src="data.js"></script> <script src="script.js"></script> ```
 
-    <main id="product-grid" class="container">
-        </main>
+---
 
-    <script src="script.js"></script>
-</body>
-</html>
+### 2. Обновляем `script.js` (Логика витрины)
+Старый код просто рисовал карточки. Новый код должен превратить каждую карточку в ссылку, которая ведет на `product.html` и передает `id` товара.
+
+```javascript
+const grid = document.getElementById('product-grid');
+
+// Очищаем сетку перед отрисовкой (на всякий случай)
+grid.innerHTML = '';
+
+products.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    
+    // Оборачиваем содержимое в ссылку с параметром ID
+    card.innerHTML = `
+        <a href="product.html?id=${item.id}" style="text-decoration: none; color: inherit;">
+            <img src="${item.img}" alt="${item.name}">
+            <div class="card-content">
+                <h3>${item.name}</h3>
+                <p class="price">$${item.price}</p>
+                <button class="view-btn">Смотреть детали</button>
+            </div>
+        </a>
+    `;
+    grid.appendChild(card);
+});
